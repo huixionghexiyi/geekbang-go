@@ -36,7 +36,7 @@ func main() {
 
 // GetStudent 获取学生
 func GetStudent() (*Result, error) {
-	db, err := sql.Open("mysql", "root:12345@/geekbang-go")
+	db, err := sql.Open("mysql", "root:123456@/geekbang-go")
 	if err != nil {
 		return nil, xerrors.Wrap(err, "打开数据库失败")
 	}
@@ -48,16 +48,16 @@ func GetStudent() (*Result, error) {
 	}
 	defer stmt.Close()
 
-	var id int
+	id := 2
 	var username string
 	var age int
 	var gender int
 
 	result := &Result{}
 
-	err = stmt.QueryRow(1).Scan(&id, &username, &age, &gender)
+	err = stmt.QueryRow(2).Scan(&id, &username, &age, &gender)
 	if xerrors.Is(err, sql.ErrNoRows) {
-		result.code = 400
+		result.code = 404
 		result.msg = fmt.Sprintf("not found student,id:%d", id)
 		return result, nil
 	}
