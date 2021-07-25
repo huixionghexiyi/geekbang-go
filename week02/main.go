@@ -21,6 +21,9 @@ type Result struct {
 	msg  string      `json:"msg"`
 }
 
+/**
+	如果查询的时候返回 ErrNoRow 时，不应该抛出错误，应该内部做降级处理，我这里是将查询不到的信息放到message 中，并返回一个空的 student
+ */
 func main() {
 
 	student, err := GetStudent()
