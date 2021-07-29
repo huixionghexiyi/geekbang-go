@@ -11,3 +11,4 @@ func Hello(c *context.Context){
 	c.SuccessJson("hello world")
 	time.Sleep(time.Second)
 }
+

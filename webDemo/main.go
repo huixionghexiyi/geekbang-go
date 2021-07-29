@@ -7,7 +7,7 @@ import (
 
 func main() {
 	server := server2.NewHttpServer("web demo")
-	server.Route("/hello", handler.Hello)
+	server.Route("GET", "/hello", handler.Hello)
 
 	server.Start(":8080")
 }
